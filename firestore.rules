@@ -1,0 +1,57 @@
+// firestore.rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow public reads everywhere
+    match /{document=**} {
+      allow read: if true;
+    }
+
+    // Site settings (hero, social, about, etc.)
+    match /siteSettings/{documentId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Core service collections
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /serviceDetails/{serviceId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /testimonials/{testimonialId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /pricingTiers/{tierId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /faqs/{faqId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /pricingPages/{pageId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /blogPosts/{postId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
