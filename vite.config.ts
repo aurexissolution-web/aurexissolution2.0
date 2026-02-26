@@ -22,7 +22,6 @@ export default defineConfig(({ mode }) => {
             manualChunks(id) {
               if (id.includes('node_modules')) {
                 if (id.includes('/react-router-dom/')) return 'vendor-router';
-                if (id.includes('/react-dom/') || id.includes('/react/')) return 'vendor-react';
                 if (id.includes('/framer-motion/')) return 'vendor-motion';
                 if (id.includes('/@supabase/')) return 'vendor-supabase';
                 if (id.includes('/lucide-react/')) return 'vendor-icons';
