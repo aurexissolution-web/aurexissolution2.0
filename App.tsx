@@ -1,4 +1,5 @@
  import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { Analytics } from "@vercel/analytics/react";
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -154,6 +155,7 @@ const AppRoutes: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = (
            </div>
          )}
          <AppRoutes darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+         <Analytics />
       </div>
     </Router>
   );
