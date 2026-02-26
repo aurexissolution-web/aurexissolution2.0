@@ -1,6 +1,6 @@
  import React, { useState, useEffect, Suspense, lazy } from 'react';
  import { Analytics } from "@vercel/analytics/react";
- import { SpeedInsights } from "@vercel/speed-insights/react";
+ import { injectSpeedInsights } from "@vercel/speed-insights";
  import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -108,6 +108,13 @@ const AppRoutes: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = (
   );
 };
 
+const SpeedInsightsInit: React.FC = () => {
+  useEffect(() => {
+    injectSpeedInsights({ framework: 'react' });
+  }, []);
+  return null;
+};
+
  const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -157,7 +164,7 @@ const AppRoutes: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = (
          )}
          <AppRoutes darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
          <Analytics />
-         <SpeedInsights />
+         <SpeedInsightsInit />
       </div>
     </Router>
   );
